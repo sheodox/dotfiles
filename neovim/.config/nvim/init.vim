@@ -21,6 +21,10 @@ call dein#add('evanleck/vim-svelte')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
 call dein#add('junegunn/fzf.vim')
+call dein#add('preservim/nerdtree')
+call dein#add('ryanoasis/vim-devicons')
+call dein#add('Xuyuanp/nerdtree-git-plugin')
+
 
 " Required:
 call dein#end()
@@ -41,6 +45,12 @@ colorscheme gruvbox
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <Tab> :tabnext<CR>
+
 let g:coc_global_extensions = [
 			\'coc-json',
 			\'coc-git',
@@ -48,6 +58,7 @@ let g:coc_global_extensions = [
 			\'coc-css',
 			\'coc-svelte',
 			\'coc-html',
+			\'coc-solargraph',
 			\]
 
 
