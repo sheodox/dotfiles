@@ -43,9 +43,12 @@ endif
 "End dein Scripts-------------------------
 
 let mapleader = ","
+set spell
 
+set updatetime=300
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
 nnoremap <leader>t :NERDTreeToggle<CR>
 
