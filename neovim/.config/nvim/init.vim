@@ -25,6 +25,7 @@ call dein#add('preservim/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-surround')
 
 
 " Required:
