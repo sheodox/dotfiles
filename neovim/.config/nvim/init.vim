@@ -24,6 +24,7 @@ call dein#add('junegunn/fzf.vim')
 call dein#add('preservim/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
+call dein#add('tpope/vim-fugitive')
 
 
 " Required:
@@ -40,16 +41,23 @@ endif
 
 "End dein Scripts-------------------------
 
-colorscheme gruvbox
+let mapleader = ","
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 
+" tabbing shortcuts
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <Tab> :tabnext<CR>
+
+" git fugitive magic command
+nnoremap <leader>gs :G<CR>
+
+nnoremap <leader>f :GFiles<CR>
+
 
 let g:coc_global_extensions = [
 			\'coc-json',
@@ -68,3 +76,4 @@ set shiftwidth=0
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+colorscheme gruvbox
