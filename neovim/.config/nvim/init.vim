@@ -4,20 +4,21 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/sheodox/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin('/home/sheodox/.cache/dein')
+call dein#begin('~/.cache/dein')
 
 " Let dein manage dein
 " Required:
-call dein#add('/home/sheodox/.cache/dein/repos/github.com/Shougo/dein.vim')
+call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here like this:
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('vim-airline/vim-airline')
 call dein#add('morhetz/gruvbox')
-call dein#add('evanleck/vim-svelte')
+" call dein#add('evanleck/vim-svelte')
+call dein#add('leafOfTree/vim-svelte-plugin')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
 call dein#add('junegunn/fzf.vim')
@@ -71,6 +72,7 @@ let g:coc_global_extensions = [
 			\'coc-svelte',
 			\'coc-html',
 			\'coc-solargraph',
+			\'coc-angular',
 			\]
 
 
