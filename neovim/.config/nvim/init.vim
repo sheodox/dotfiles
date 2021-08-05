@@ -16,8 +16,7 @@ call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 " Add or remove your plugins here like this:
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('vim-airline/vim-airline')
-call dein#add('morhetz/gruvbox')
-" call dein#add('evanleck/vim-svelte')
+call dein#add('sonph/onehalf')
 call dein#add('leafOfTree/vim-svelte-plugin')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
@@ -80,6 +79,16 @@ set number relativenumber
 set tabstop=4
 set shiftwidth=0
 
+set t_Co=256
+set cursorline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-colorscheme gruvbox
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
