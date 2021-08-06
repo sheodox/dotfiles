@@ -26,6 +26,7 @@ call dein#add('ryanoasis/vim-devicons')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-fugitive')
 call dein#add('tpope/vim-surround')
+call dein#add('preservim/nerdcommenter')
 
 
 " Required:
@@ -56,6 +57,8 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <Tab> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-w> :q<CR>
 
 " git fugitive magic command
 nnoremap <leader>gs :G<CR>
