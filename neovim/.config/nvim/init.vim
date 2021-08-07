@@ -16,6 +16,7 @@ call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 " Add or remove your plugins here like this:
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 call dein#add('sheodox/sheodoxdark')
 call dein#add('leafOfTree/vim-svelte-plugin')
 call dein#add('airblade/vim-gitgutter')
@@ -59,13 +60,21 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <Tab> :tabnext<CR>
 nnoremap <C-t> :tabnew<CR>
-nnoremap <C-w> :q<CR>
 
 " git fugitive magic command
 nnoremap <leader>gs :G<CR>
 
 nnoremap <leader>f :GFiles<CR>
+nnoremap <leader>r :Rg<CR>
 
+" function and hotkey to display the syntax name under the cursor
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+nnoremap <leader>k :call SynStack()<CR>
 
 let g:coc_global_extensions = [
 			\'coc-json',
@@ -86,8 +95,9 @@ set shiftwidth=0
 set t_Co=256
 set cursorline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-colorscheme sheodoxdark
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
 
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -95,3 +105,4 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+colorscheme sheodoxdark
