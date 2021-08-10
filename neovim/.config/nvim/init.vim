@@ -31,6 +31,7 @@ call dein#add('preservim/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
 call dein#add('nvim-treesitter/nvim-treesitter', {'do' : ':TSUpdate'})
 call dein#add('nvim-treesitter/playground')
+call dein#add('mattn/emmet-vim')
 
 
 " Required:
