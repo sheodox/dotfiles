@@ -29,6 +29,8 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('tpope/vim-surround')
 call dein#add('preservim/nerdcommenter')
 call dein#add('editorconfig/editorconfig-vim')
+call dein#add('nvim-treesitter/nvim-treesitter', {'do' : ':TSUpdate'})
+call dein#add('nvim-treesitter/playground')
 
 
 " Required:
@@ -46,7 +48,8 @@ endif
 "End dein Scripts-------------------------
 
 let mapleader = ","
-set spell
+" treesitter spell checks code which gets annoying
+" set spell
 set nowrap
 
 set updatetime=300
@@ -84,14 +87,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" function and hotkey to display the syntax name under the cursor
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-nnoremap <leader>k :call SynStack()<CR>
+nnoremap <silent> <leader>k :TSHighlightCapturesUnderCursor<CR>
 
 let g:coc_global_extensions = [
 			\'coc-json',
@@ -121,5 +117,15 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"javascript", "typescript", "html", "bash", "css", "scss", "svelte", "python", "json", "query"},
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 colorscheme sheodoxdark
