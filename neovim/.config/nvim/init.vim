@@ -32,6 +32,7 @@ call dein#add('editorconfig/editorconfig-vim')
 call dein#add('nvim-treesitter/nvim-treesitter', {'do' : ':TSUpdate'})
 call dein#add('nvim-treesitter/playground')
 call dein#add('mattn/emmet-vim')
+call dein#add('mbbill/undotree')
 
 
 " Required:
@@ -49,9 +50,20 @@ endif
 "End dein Scripts-------------------------
 
 let mapleader = ","
+
 " treesitter spell checks code which gets annoying
 " set spell
+
 set nowrap
+set noerrorbells
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set scrolloff=8
+set signcolumn=yes
+set colorcolumn=120
 
 set updatetime=300
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
@@ -59,6 +71,9 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
 nnoremap <leader>t :NERDTreeToggle<CR>
+
+" undotree
+nnoremap <leader>ut :UndotreeToggle<CR>
 
 " tabbing shortcuts
 nnoremap <C-Left> :tabprevious<CR>
@@ -69,10 +84,11 @@ nnoremap <C-t> :tabnew<CR>
 " git fugitive magic command
 nnoremap <leader>gs :G<CR>
 
+" FZF
 nnoremap <leader>f :GFiles<CR>
 nnoremap <leader>r :Rg<CR>
 
-" coc commands
+" CoC commands
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)

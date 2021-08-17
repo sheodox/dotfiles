@@ -9,5 +9,5 @@ Install:
 * [a patched nerd font](https://github.com/ryanoasis/nerd-fonts#font-installation)
 * [`gem install solargraph`](https://github.com/castwide/solargraph)
 
-Clone this repository somewhere, then run `stow *`
+Clone this repository to your home directory, then run `stow nvim` (replace nvim with any other directory name here).
 
