@@ -118,6 +118,8 @@ let g:compe.source.ultisnips = v:true
 let g:compe.source.luasnip = v:true
 let g:compe.source.emoji = v:true
 
+" nerdcommenter, toggle line with Ctrl + /
+xnoremap <C-_> :call nerdcommenter#Comment('x', 'Toggle')<CR>
 
 set number relativenumber
 set tabstop=4
@@ -206,7 +208,8 @@ nvim_lsp.svelte.setup {
 				svelte = {
 					format = {
 						config = {
-							svelteSortOrder = 'options-styles-markup-scripts'
+							svelteSortOrder = 'options-styles-markup-scripts',
+							printWidth = 120
 						}
 					}
 				}
