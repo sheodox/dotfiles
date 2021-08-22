@@ -20,8 +20,8 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('sheodox/sheodoxdark')
 call dein#add('airblade/vim-gitgutter')
-call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
-call dein#add('junegunn/fzf.vim')
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-telescope/telescope.nvim')
 call dein#add('preservim/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
@@ -81,9 +81,11 @@ nnoremap <C-t> :tabnew<CR>
 " git fugitive magic command
 nnoremap <leader>gs :G<CR>
 
-" FZF
-nnoremap <leader>f :GFiles<CR>
-nnoremap <leader>r :Rg<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " nvim-compe
 set completeopt=menuone,noselect
