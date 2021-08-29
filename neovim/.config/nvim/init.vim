@@ -69,6 +69,12 @@ set updatetime=300
 
 nnoremap <leader>t :NERDTreeToggle<CR>
 
+" Map Ctrl-Backspace to delete the previous word in insert mode.
+imap <C-BS> <C-W>
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+set backspace=indent,eol,start
+
 " undotree
 nnoremap <leader>ut :UndotreeToggle<CR>
 
