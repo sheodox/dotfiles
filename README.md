@@ -1,6 +1,6 @@
 # sheodox dotfiles
 
-Install:
+## Neovim Install:
 * `stow`
 * [`nvim`](https://neovim.io/)
 * [`dein`](https://github.com/Shougo/dein.vim)
@@ -12,3 +12,10 @@ Install:
 
 Clone this repository to your home directory, then run `stow nvim` (replace nvim with any other directory name here).
 
+## Kitty Install:
+
+To install fonts:
+1. Download the JetBrains Mono Nerd Font from the latest [Nerd Fonts release](https://github.com/ryanoasis/nerd-fonts/releases/latest).
+2. Extract to `~/.local/share/fonts`
+3. `rm *Windows*` in that directory
+4. `fc-cache -f - v`
