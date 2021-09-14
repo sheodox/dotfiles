@@ -33,6 +33,8 @@ call dein#add('nvim-treesitter/nvim-treesitter', {'do' : ':TSUpdate'})
 call dein#add('nvim-treesitter/playground')
 call dein#add('mattn/emmet-vim')
 call dein#add('mbbill/undotree')
+call dein#add('romgrk/barbar.nvim')
+call dein#add('kyazdani42/nvim-web-devicons')
 
 
 " Required:
@@ -79,10 +81,11 @@ set backspace=indent,eol,start
 nnoremap <leader>ut :UndotreeToggle<CR>
 
 " tabbing shortcuts
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <Tab> :tabnext<CR>
-nnoremap <C-t> :tabnew<CR>
+nnoremap <silent> <C-Left> :BufferPrevious<CR>
+nnoremap <silent> <C-Right> :BufferNext<CR>
+nnoremap <silent> <Tab> :BufferNext<CR>
+nnoremap <silent> <C-q> :BufferClose<CR>
+nnoremap <silent> <C-t> :tabnew<CR>
 
 " git fugitive magic command
 nnoremap <leader>gs :G<CR>
@@ -140,8 +143,6 @@ set shiftwidth=0
 
 set t_Co=256
 set cursorline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
 
