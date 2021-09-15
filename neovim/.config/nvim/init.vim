@@ -84,6 +84,7 @@ nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <silent> <C-Left> :BufferPrevious<CR>
 nnoremap <silent> <C-Right> :BufferNext<CR>
 nnoremap <silent> <Tab> :BufferNext<CR>
+nnoremap <silent> <S-Tab> :BufferPrevious<CR>
 nnoremap <silent> <C-q> :BufferClose<CR>
 nnoremap <silent> <C-t> :tabnew<CR>
 
