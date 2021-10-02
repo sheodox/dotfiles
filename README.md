@@ -18,3 +18,13 @@ To install fonts:
 2. Extract to `~/.local/share/fonts`
 3. `rm *Windows*` in that directory
 4. `fc-cache -f -v`
+
+## Japanese IME
+
+On Fedora the mozc Japanese IME can be used with Fcitx5 using the following install command:
+
+```
+sudo dnf install fcitx5-mozc fcitx5 fcitx5-qt fcitx5-gtk fcitx5-configtool fcitx5-autostart
+```
+
+After rebooting you can launch Fcitx5 Configuration and add the `mozc` input method. Then on the "Global Options" tab set the "Trigger Input Method" hotkey to whatever you're used to.
