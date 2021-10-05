@@ -5,6 +5,7 @@ To install: clone this repository to your home folder. Modules here can be autom
 ## Neovim Dependencies:
 
 * [`nvim`](https://neovim.io/)
+* [`xclip`](https://github.com/astrand/xclip)
 * [`dein`](https://github.com/Shougo/dein.vim)
 * [`ripgrep`](https://github.com/BurntSushi/ripgrep)
 * [A patched nerd font](https://github.com/ryanoasis/nerd-fonts#font-installation)
