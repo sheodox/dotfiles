@@ -90,7 +90,6 @@ neovim: deps node
 
 node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-	source ~/.bashrc
-	nvm install 14
+	source ~/.bashrc && nvm install 14
 
 .PHONY: common-apps work-apps home-apps common-desktop home-desktop work-desktop bashrc desktop deps kitty mozc neovim node 
