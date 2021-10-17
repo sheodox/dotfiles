@@ -72,7 +72,7 @@ neovim: deps node
 	sudo dnf install xclip ripgrep
 	# install language servers used by nvim-lsp
 	gem install solargraph
-	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server @prisma/language-server
+	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server
 	stow neovim
 	# install the plugin manager dein
 	mkdir -p /tmp/sheodox-dotfiles/dein
