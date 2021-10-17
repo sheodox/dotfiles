@@ -25,11 +25,11 @@ home-apps: common-apps
 bashrc: 
 	# check to see if we've installed the dotfiles bashrc (if it's not a symlink
 	# then it hasn't been installed yet)
-	if ! [[ -L ~/.bashrc ]]
-	then
-		rm ~/.bashrc
-		stow bashrc
+	if ! [[ -L ~/.bashrc ]]; then\
+		rm ~/.bashrc;\
+		stow bashrc;\
 	fi
+
 
 common-desktop: bashrc mozc neovim kitty
 
