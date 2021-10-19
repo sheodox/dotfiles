@@ -1,7 +1,12 @@
-augroup wrap_sometimes
+function WritingSettings()
+	setlocal wrap
+	setlocal textwidth=0
+	setlocal spell
+endfunction
+
+augroup enable_writing_settings
 	autocmd!
-	autocmd BufEnter COMMIT_EDITMSG,*.md setlocal wrap
-	autocmd BufEnter COMMIT_EDITMSG,*.md setlocal textwidth=0
+	autocmd FileType markdown,gitcommit call WritingSettings()
 augroup END
 
 "  check node_modules/.bin, necessary for prettier it seems
