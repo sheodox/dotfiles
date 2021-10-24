@@ -20,6 +20,9 @@ home-apps: common-apps
 	flatpak install flathub \
 		com.discordapp.Discord \
 		org.signal.Signal 
+	# set the home directory as the filesystem root so attachments in the home directory can be found.
+	sudo flatpak override com.discordapp.Discord --filesystem=$(HOME)
+	sudo flatpak override org.signal.Signal --filesystem=$(HOME)
 	sudo dnf install steam 
 
 bashrc: 
