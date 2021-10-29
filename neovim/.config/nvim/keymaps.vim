@@ -32,14 +32,6 @@ nnoremap <leader>fgs <cmd>Telescope git_status<cr>
 " treesitter
 nnoremap <silent> <leader>k :TSHighlightCapturesUnderCursor<CR>
 
-" nvim-compe
-set completeopt=menuone,noselect
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
 " nerdcommenter, toggle line with Ctrl + /
 xnoremap <C-_> :call nerdcommenter#Comment('x', 'Toggle')<CR>
 

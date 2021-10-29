@@ -15,7 +15,15 @@ call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here like this:
 call dein#add('neovim/nvim-lspconfig')
-call dein#add('hrsh7th/nvim-compe')
+call dein#add('hrsh7th/nvim-cmp')
+call dein#add('hrsh7th/cmp-buffer')
+call dein#add('hrsh7th/cmp-path')
+call dein#add('hrsh7th/cmp-nvim-lsp')
+call dein#add('onsails/lspkind-nvim')
+call dein#add('hrsh7th/cmp-vsnip')
+call dein#add('hrsh7th/vim-vsnip')
+
+
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('sheodox/sheodoxdark')

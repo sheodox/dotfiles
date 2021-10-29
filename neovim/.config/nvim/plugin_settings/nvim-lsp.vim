@@ -37,10 +37,12 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 -- Find more language servers at https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#prismals
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { 'tsserver', 'bashls', 'html', 'cssls', 'angularls', 'jsonls', 'solargraph', 'pyright' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
+	capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
     }
