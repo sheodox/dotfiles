@@ -35,3 +35,10 @@ nnoremap <silent> <leader>k :TSHighlightCapturesUnderCursor<CR>
 " nerdcommenter, toggle line with Ctrl + /
 xnoremap <C-_> :call nerdcommenter#Comment('x', 'Toggle')<CR>
 
+" easy copy/paste
+xnoremap <leader>c "+y
+xnoremap <leader>p "+p
+
+" quickfix list navigation
+nnoremap <leader>qn :cnext<CR>
+nnoremap <leader>qp :cprev<CR>
