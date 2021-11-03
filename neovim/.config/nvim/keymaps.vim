@@ -49,4 +49,10 @@ nnoremap <leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
 nnoremap <leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
 nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
+" set a harpoon mark at the specified index
+nnoremap <leader>h1 :lua require("harpoon.mark").set_current_at(1)<CR>
+nnoremap <leader>h2 :lua require("harpoon.mark").set_current_at(2)<CR>
+nnoremap <leader>h3 :lua require("harpoon.mark").set_current_at(3)<CR>
+nnoremap <leader>h4 :lua require("harpoon.mark").set_current_at(4)<CR>
+" open the harpoon menu
 nnoremap <leader>hm :lua require("harpoon.ui").toggle_quick_menu()<CR>
