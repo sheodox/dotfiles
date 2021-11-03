@@ -23,12 +23,12 @@ call dein#add('onsails/lspkind-nvim')
 call dein#add('hrsh7th/cmp-vsnip')
 call dein#add('hrsh7th/vim-vsnip')
 
-
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('sheodox/sheodoxdark')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('nvim-lua/plenary.nvim')
+call dein#add('ThePrimeagen/harpoon')
 call dein#add('nvim-telescope/telescope.nvim')
 call dein#add('preservim/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
