@@ -28,6 +28,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
 nnoremap <leader>fgs <cmd>Telescope git_status<cr>
+nnoremap <leader>gr <cmd>Telescope lsp_references<cr>
 
 " treesitter
 nnoremap <silent> <leader>k :TSHighlightCapturesUnderCursor<CR>
