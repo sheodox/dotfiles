@@ -20,6 +20,8 @@ set number relativenumber
 set tabstop=4
 set shiftwidth=0
 
+set diffopt=filler,iwhite
+
 set t_Co=256
 set cursorline
 
