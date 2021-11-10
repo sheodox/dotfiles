@@ -7,6 +7,10 @@ imap <C-BS> <C-W>
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
 
+" re-select the selection after indenting in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
 " undotree
 nnoremap <leader>ut :UndotreeToggle<CR>
 
