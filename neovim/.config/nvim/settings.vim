@@ -22,6 +22,9 @@ set shiftwidth=0
 
 set diffopt=filler,iwhite
 
+set list
+set listchars=tab:›\ ,extends:›,precedes:‹,nbsp:·,trail:·,lead:.
+
 set t_Co=256
 set cursorline
 
@@ -33,3 +36,4 @@ endif
 
 colorscheme sheodoxdark
 set background=dark
+hi NonText ctermfg=16 guifg=#4a4a59
