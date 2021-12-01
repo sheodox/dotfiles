@@ -2,6 +2,10 @@ function WritingSettings()
 	setlocal wrap
 	setlocal textwidth=0
 	setlocal spell
+	" since wrap is on, use g to move by visual lines so moving in a large
+	" block of text is easier to do.
+	nnoremap <buffer> j gj
+	nnoremap <buffer> k gk
 endfunction
 
 augroup enable_writing_settings
