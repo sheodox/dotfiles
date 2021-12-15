@@ -11,6 +11,12 @@ noremap! <C-h> <C-w>
 vnoremap < <gv
 vnoremap > >gv
 
+" big movements
+nnoremap <A-h> 10h
+nnoremap <A-j> 10j
+nnoremap <A-k> 10k
+nnoremap <A-l> 10l
+
 " undotree
 nnoremap <leader>ut :UndotreeToggle<CR>
 
