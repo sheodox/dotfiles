@@ -39,6 +39,7 @@ lua <<EOF
       { name = 'nvim_lsp' },
       { name = 'vsnip' },
       { name = 'path' },
+      { name = 'cmdline' },
       { name = 'buffer', keyword_length = 5 },
     })
   })
