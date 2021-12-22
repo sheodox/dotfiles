@@ -16,6 +16,7 @@ require('formatter').setup({
 		html = { prettier },
 		css = { prettier },
 		scss = { prettier },
+		json = { prettier },
 		ruby = {
 			function()
 				return {
