@@ -45,6 +45,7 @@ call dein#add('mbbill/undotree')
 call dein#add('romgrk/barbar.nvim')
 call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('mhartington/formatter.nvim')
+call dein#add('justinmk/vim-sneak')
 
 " Required:
 call dein#end()

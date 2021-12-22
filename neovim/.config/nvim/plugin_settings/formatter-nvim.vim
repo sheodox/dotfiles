@@ -17,6 +17,8 @@ require('formatter').setup({
 		css = { prettier },
 		scss = { prettier },
 		json = { prettier },
+		yaml = { prettier },
+		markdown = { prettier },
 		ruby = {
 			function()
 				return {
