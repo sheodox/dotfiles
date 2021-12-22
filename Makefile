@@ -55,7 +55,7 @@ neovim: deps node
 	sudo dnf install xclip ripgrep rubygems ruby-devel
 	# install language servers used by nvim-lsp
 	gem install solargraph
-	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server
+	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server bash-language-server @angular/language-server
 	stow neovim
 	# install the plugin manager dein
 	mkdir -p /tmp/sheodox-dotfiles/dein
@@ -73,6 +73,6 @@ neovim: deps node
 
 node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-	source ~/.bashrc && nvm install 14
+	source ~/.bashrc && nvm install 16
 
 .PHONY: common-apps work-apps home-apps common-desktop home-desktop work-desktop bashrc desktop deps kitty mozc neovim node 
