@@ -10,4 +10,5 @@ runtime autocommands.vim
 runtime plugin_settings/nvim-cmp.vim
 runtime plugin_settings/nvim-lsp.vim
 runtime plugin_settings/nvim-treesitter.vim
+runtime plugin_settings/formatter-nvim.vim
 
