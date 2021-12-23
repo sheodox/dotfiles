@@ -23,5 +23,5 @@ augroup END
 
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.ts,*.svelte,*.js,*.html,*.scss,*.css,*.json,*.yml,*.rb,*.md FormatWrite
+  autocmd BufWritePost *.ts,*.svelte,*.js,*.html,*.scss,*.css,*.json,*.yml,*.rb,*.md,*.go FormatWrite
 augroup END
