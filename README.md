@@ -13,3 +13,7 @@ The `mozc` Japanese IME is installed along with Fcitx5 with either of the deskto
 Shortcuts aren't managed by these dotfiles yet, but here are some to set:
 
 * Screenshot region to clipboard: `spectacle -brc`
+
+## Not Yet Automated
+
+Go and the `gopls` (the Go LSP) install isn't yet automated. You can install Go using the [Go install docs](https://go.dev/doc/install). `gopls` can be installed using `go install golang.org/x/tools/gopls@latest`.
