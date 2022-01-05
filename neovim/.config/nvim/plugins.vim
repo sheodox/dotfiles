@@ -31,9 +31,8 @@ call dein#add('airblade/vim-gitgutter')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('ThePrimeagen/harpoon')
 call dein#add('nvim-telescope/telescope.nvim')
-call dein#add('preservim/nerdtree')
+call dein#add('kyazdani42/nvim-tree.lua')
 call dein#add('ryanoasis/vim-devicons')
-call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-fugitive')
 call dein#add('tpope/vim-surround')
 call dein#add('preservim/nerdcommenter')
@@ -64,3 +63,4 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
 
+lua require'nvim-tree'.setup()

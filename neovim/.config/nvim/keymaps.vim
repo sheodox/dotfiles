@@ -1,6 +1,6 @@
 let mapleader = ","
 
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <leader>t :NvimTreeFindFileToggle<CR>
 
 " Map Ctrl-Backspace to delete the previous word in insert mode.
 imap <C-BS> <C-W>
