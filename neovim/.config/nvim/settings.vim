@@ -37,4 +37,3 @@ endif
 colorscheme sheodoxdark
 set background=dark
 hi NonText ctermfg=16 guifg=#4a4a59
-hi CursorLine guibg=#2a2f3d gui=NONE cterm=NONE

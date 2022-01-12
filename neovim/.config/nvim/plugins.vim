@@ -41,7 +41,6 @@ call dein#add('nvim-treesitter/nvim-treesitter', {'do' : ':TSUpdate'})
 call dein#add('nvim-treesitter/playground')
 call dein#add('mattn/emmet-vim')
 call dein#add('rrethy/vim-hexokinase', { 'build': 'make hexokinase' })
-call dein#add('RRethy/vim-illuminate')
 
 call dein#add('mbbill/undotree')
 call dein#add('romgrk/barbar.nvim')
