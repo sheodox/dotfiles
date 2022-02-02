@@ -25,3 +25,15 @@ augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *.ts,*.svelte,*.js,*.tsx,*.html,*.scss,*.css,*.json,*.yml,*.rb,*.md,*.go FormatWrite
 augroup END
+
+function FugitiveMenuSettings()
+	" push the current branch, even if it's not tracked on the remote
+	" https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
+	nnoremap <buffer> <leader>gp :Git -c push.default=current push<CR>
+endfunction
+
+augroup FugitiveMenuKeyMaps
+  autocmd!
+  autocmd Filetype fugitive call FugitiveMenuSettings()
+augroup END
+
