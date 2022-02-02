@@ -33,7 +33,7 @@ function FugitiveMenuSettings()
 endfunction
 
 augroup FugitiveMenuKeyMaps
-  autocmd!
-  autocmd Filetype fugitive call FugitiveMenuSettings()
+	autocmd!
+	autocmd Filetype fugitive call FugitiveMenuSettings()
 augroup END
 
