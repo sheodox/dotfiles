@@ -47,6 +47,7 @@ call dein#add('romgrk/barbar.nvim')
 call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('mhartington/formatter.nvim')
 call dein#add('justinmk/vim-sneak')
+call dein#add('windwp/nvim-autopairs')
 
 " Required:
 call dein#end()
@@ -67,3 +68,4 @@ let g:airline_theme='molokai'
 
 lua require'nvim-tree'.setup()
 lua require('gitsigns').setup()
+lua require('nvim-autopairs').setup{}
