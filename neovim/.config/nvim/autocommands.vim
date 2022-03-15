@@ -13,27 +13,29 @@ augroup enable_writing_settings
 	autocmd FileType markdown,gitcommit call WritingSettings()
 augroup END
 
-  "check node_modules/.bin, necessary for prettier it seems
-"let g:neoformat_try_node_exe = 1
-"augroup fmt
-  "autocmd!
-   "sbdchd/neoformat/issues/134
-  "autocmd BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
-"augroup END
-
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *.ts,*.svelte,*.js,*.tsx,*.html,*.scss,*.css,*.json,*.yml,*.rb,*.md,*.go FormatWrite
 augroup END
 
-function FugitiveMenuSettings()
-	" push the current branch, even if it's not tracked on the remote
-	" https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
-	nnoremap <buffer> <leader>gp :Git -c push.default=current push<CR>
-endfunction
+lua <<EOF
+local function createBranch()
+	vim.ui.input({prompt = "New branch name: "}, function(input)
+		if input ~= nil then
+			vim.cmd('Git checkout -b '..input)
+		else
+			print('No new branch created')
+		end
+	end)
+end
 
-augroup FugitiveMenuKeyMaps
-	autocmd!
-	autocmd Filetype fugitive call FugitiveMenuSettings()
-augroup END
+local group = vim.api.nvim_create_augroup("FugitiveMenuSettings", { clear = true })
 
+vim.api.nvim_create_autocmd("FileType", { pattern = "fugitive", callback = function()
+	-- prompt to create and switch to a new branch
+	vim.keymap.set('n', '<leader>gb', createBranch, {noremap = true, expr = false, buffer = true})
+	-- push the current branch, even if it's not tracked on the remote
+	-- https://github.com/tpope/vim-fugitive/issues/1272#issuecomment-747818629
+	vim.keymap.set('n', '<leader>gp', '<cmd>Git -c push.default=current push<CR>', {noremap = true, buffer = true})
+end})
+EOF
