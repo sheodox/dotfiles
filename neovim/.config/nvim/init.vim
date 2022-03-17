@@ -4,11 +4,12 @@ runtime plugins.vim
 runtime settings.vim
 " setup keybindings
 runtime keymaps.vim
+
 " any augroup/autocmd
-runtime autocommands.vim
+lua require("autocommands")
 " plugin specific settings/setup for plugins with lots of settings
-runtime plugin_settings/nvim-cmp.vim
-runtime plugin_settings/nvim-lsp.vim
-runtime plugin_settings/nvim-treesitter.vim
-runtime plugin_settings/formatter-nvim.vim
+lua require('plugin_settings/nvim-cmp')
+lua require('plugin_settings/nvim-lsp')
+lua require('plugin_settings/nvim-treesitter')
+lua require('plugin_settings/formatter-nvim')
 

@@ -10,7 +10,7 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+PATH="$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/code/other/lua-language-server/bin"
 export PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -39,3 +39,6 @@ function nonzero_return() {
 }
 
 export PS1="\[\e[33m\]\`nonzero_return\`\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\w\[\e[m\] \[\e[34m\]\\$\[\e[m\] "
+. "$HOME/.cargo/env"
+
+alias luamake=/home/sheodox/code/other/lua-language-server/3rd/luamake/luamake

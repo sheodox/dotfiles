@@ -66,6 +66,6 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline_theme='molokai'
 
-lua require'nvim-tree'.setup()
+lua require('nvim-tree').setup()
 lua require('gitsigns').setup()
 lua require('nvim-autopairs').setup{}

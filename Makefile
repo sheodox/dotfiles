@@ -43,7 +43,7 @@ deps:
 	sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(shell rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(shell rpm -E %fedora).noarch.rpm
 
 kitty: deps
-	sh install-kitty.sh
+	sh ./install/kitty.sh
 
 # install all the dependencies needed for Japanese input using mozc with fcitx
 mozc:
@@ -51,18 +51,18 @@ mozc:
 	stow fcitx5
 
 # install neovim and dependencies these dotfiles use
-neovim: deps node
+neovim: deps node rust lua-lsp
 	sudo dnf install xclip ripgrep rubygems ruby-devel
 	# install language servers used by nvim-lsp
 	gem install solargraph
 	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server bash-language-server @angular/language-server
 	stow neovim
+	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
 	# install the plugin manager dein
 	mkdir -p /tmp/sheodox-dotfiles/dein
 	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/sheodox-dotfiles/dein/installer.sh
 	sh /tmp/sheodox-dotfiles/dein/installer.sh ~/.cache/dein
 	# build neovim
-	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
 	mkdir -p ~/code/other
 	cd ~/code/other &&\
 	git clone https://github.com/neovim/neovim &&\
@@ -70,9 +70,17 @@ neovim: deps node
 	make CMAKE_BUILD_TYPE=RelWithDebInfo &&\
 	sudo make install
 
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o ~/Downloads/rustup-init.sh
+	sh ~/Downloads/rustup-init.sh -y
+	# lua style formatting
+	cargo install stylua
+
+lua-lsp:
+	sh ./install/lua-lsp.sh
 
 node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 	source ~/.bashrc && nvm install 16
 
-.PHONY: common-apps work-apps home-apps common-desktop home-desktop work-desktop bashrc desktop deps kitty mozc neovim node 
+.PHONY: common-apps work-apps home-apps common-desktop home-desktop work-desktop bashrc desktop deps kitty mozc neovim node rust lua-lsp
