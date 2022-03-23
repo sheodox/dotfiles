@@ -67,3 +67,14 @@ nnoremap <leader>h3 :lua require("harpoon.mark").set_current_at(3)<CR>
 nnoremap <leader>h4 :lua require("harpoon.mark").set_current_at(4)<CR>
 " open the harpoon menu
 nnoremap <leader>hm :lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+nnoremap <A-q><A-q> :qa!<CR>
+
+" quit on :Q
+command! Q quit
+
+lua vim.keymap.set('n', "<leader>ll", require('projectlaunch').toggle_main_menu, {noremap = true, expr = false, buffer = false})
+lua vim.keymap.set('n', "<leader>lf", require('projectlaunch').toggle_float, {noremap = true, expr = false, buffer = false})
+lua vim.keymap.set('n', "<leader>ls", require('projectlaunch').toggle_split, {noremap = true, expr = false, buffer = false})
+lua vim.keymap.set('n', "<leader>ln", require('projectlaunch').show_next, {noremap = true, expr = false, buffer = false})
+lua vim.keymap.set('n', "<leader>lm", require('projectlaunch').show_prev, {noremap = true, expr = false, buffer = false})

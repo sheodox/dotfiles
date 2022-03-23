@@ -49,6 +49,9 @@ call dein#add('mhartington/formatter.nvim')
 call dein#add('justinmk/vim-sneak')
 call dein#add('windwp/nvim-autopairs')
 
+" call dein#local('~/code/lua', {}, ['projectlaunch.nvim'])
+call dein#add('sheodox/projectlaunch.nvim')
+
 " Required:
 call dein#end()
 "

@@ -39,7 +39,9 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 -- Find more language servers at https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#prismals
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 local servers = { "tsserver", "bashls", "html", "cssls", "angularls", "jsonls", "solargraph", "pyright", "gopls" }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
@@ -53,6 +55,7 @@ end
 
 nvim_lsp.svelte.setup({
 	on_attach = on_attach,
+	capabilities = capabilities,
 	settings = {
 		svelte = {
 			plugin = {
@@ -74,7 +77,9 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 if vim.fn.executable("lua-language-server") == 1 then
-	require("lspconfig").sumneko_lua.setup({
+	nvim_lsp.sumneko_lua.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
 		settings = {
 			Lua = {
 				runtime = {
