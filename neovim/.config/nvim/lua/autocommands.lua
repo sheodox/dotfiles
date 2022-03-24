@@ -3,9 +3,9 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "gitcommit" },
 	group = writingGroup,
 	callback = function()
-		vim.bo.textwidth = 0
-		vim.wo.wrap = true
-		vim.wo.spell = true
+		vim.opt_local.textwidth = 0
+		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
 		-- since wrap is on, use g to move by visual lines so moving in a large
 		-- block of text is easier to do.
 		vim.keymap.set("n", "j", "gj", { noremap = true, buffer = true })
