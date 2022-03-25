@@ -39,6 +39,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
 nnoremap <leader>fgs <cmd>Telescope git_status<cr>
 nnoremap <leader>gr <cmd>Telescope lsp_references<cr>
+" find files within the directory of the current file, good for finding
+" related files to the file you're in when the file path is too long for the
+" file tree to really be easy to see without closing your buffer's window
+nnoremap <leader>fd <cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:h') })<cr>
 
 " treesitter
 nnoremap <silent> <leader>k :TSHighlightCapturesUnderCursor<CR>
