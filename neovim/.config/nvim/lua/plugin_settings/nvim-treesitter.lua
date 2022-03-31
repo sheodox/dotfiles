@@ -14,6 +14,7 @@ require("nvim-treesitter.configs").setup({
 		"hcl",
 		"go",
 		"lua",
+		"prisma",
 	},
 	highlight = {
 		enable = true,
