@@ -18,22 +18,6 @@ require("formatter").setup({
 		json = { prettier },
 		yaml = { prettier },
 		markdown = { prettier },
-		ruby = {
-			function()
-				return {
-					exe = "rubocop", -- might prepend `bundle exec `
-					args = {
-						"--auto-correct",
-						"--stdin",
-						"%:p",
-						"2>/dev/null",
-						"|",
-						"awk 'f; /^====================$/{f=1}'",
-					},
-					stdin = true,
-				}
-			end,
-		},
 		go = {
 			function()
 				return {
@@ -49,6 +33,22 @@ require("formatter").setup({
 					args = {
 						-- "--config-path ~/.config/stylua/stylua.toml",
 						"-",
+					},
+					stdin = true,
+				}
+			end,
+		},
+		ruby = {
+			function()
+				return {
+					exe = "rubocop", -- might prepend `bundle exec `
+					args = {
+						"--auto-correct",
+						"--stdin",
+						"%:p",
+						"2>/dev/null",
+						"|",
+						"awk 'f; /^====================$/{f=1}'",
 					},
 					stdin = true,
 				}
