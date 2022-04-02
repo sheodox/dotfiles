@@ -83,4 +83,4 @@ node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 	source ~/.bashrc && nvm install 16
 
-.PHONY: common-apps work-apps home-apps common-desktop home-desktop work-desktop bashrc desktop deps kitty mozc neovim node rust lua-lsp
+.PHONY: common-apps work-apps home-apps common-desktop home-desktop work-desktop bashrc deps kitty mozc neovim node rust lua-lsp
