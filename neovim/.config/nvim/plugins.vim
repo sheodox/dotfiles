@@ -49,6 +49,7 @@ call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('mhartington/formatter.nvim')
 call dein#add('ggandor/lightspeed.nvim')
 call dein#add('windwp/nvim-autopairs')
+call dein#add('junegunn/goyo.vim')
 
 " call dein#local('~/code/lua', {}, ['projectlaunch.nvim'])
 call dein#add('sheodox/projectlaunch.nvim')
