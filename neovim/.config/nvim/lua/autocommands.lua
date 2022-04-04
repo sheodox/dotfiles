@@ -9,7 +9,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 		-- break on spaces instead of in the middle of words
 		vim.opt_local.linebreak = true
-		vim.opt_local.breakat = " "
 
 		-- since wrap is on, use g to move by visual lines so moving in a large
 		-- block of text is easier to do.
