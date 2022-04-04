@@ -6,6 +6,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.textwidth = 0
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
+
+		-- break on spaces instead of in the middle of words
+		vim.opt_local.linebreak = true
+		vim.opt_local.breakat = " "
+
 		-- since wrap is on, use g to move by visual lines so moving in a large
 		-- block of text is easier to do.
 		vim.keymap.set("n", "j", "gj", { noremap = true, buffer = true })
