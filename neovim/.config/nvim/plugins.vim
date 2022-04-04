@@ -53,6 +53,7 @@ call dein#add('junegunn/goyo.vim')
 
 " call dein#local('~/code/lua', {}, ['projectlaunch.nvim'])
 call dein#add('sheodox/projectlaunch.nvim')
+call dein#add('sheodox/markdown-map.nvim')
 
 " Required:
 call dein#end()
