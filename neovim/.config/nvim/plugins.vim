@@ -25,9 +25,8 @@ call dein#add('hrsh7th/cmp-vsnip')
 call dein#add('hrsh7th/vim-vsnip')
 
 call dein#add('nvim-lua/plenary.nvim')
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('sheodox/sheodoxdark')
+call dein#add('nvim-lualine/lualine.nvim')
+call dein#add('folke/tokyonight.nvim')
 call dein#add('lewis6991/gitsigns.nvim')
 call dein#add('lewis6991/spellsitter.nvim')
 call dein#add('ThePrimeagen/harpoon')
@@ -71,10 +70,10 @@ endif
 "End dein Scripts-------------------------
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='molokai'
 
 lua require('nvim-tree').setup({ preserve_window_proportions = true })
 lua require('gitsigns').setup()
 lua require('spellsitter').setup()
 lua require('nvim-autopairs').setup{}
 lua require('projectlaunch').setup({split_default_width = 80})
+lua require('lualine').setup()

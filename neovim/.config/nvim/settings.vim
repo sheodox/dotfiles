@@ -33,6 +33,6 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme sheodoxdark
+let g:tokyonight_style="night"
+colorscheme tokyonight
 set background=dark
-hi NonText ctermfg=16 guifg=#4a4a59
