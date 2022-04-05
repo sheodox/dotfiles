@@ -1,5 +1,4 @@
-" treesitter spell checks code which gets annoying
-" set spell
+set spell
 
 set nowrap
 set noerrorbells

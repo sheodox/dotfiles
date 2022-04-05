@@ -29,6 +29,7 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('sheodox/sheodoxdark')
 call dein#add('lewis6991/gitsigns.nvim')
+call dein#add('lewis6991/spellsitter.nvim')
 call dein#add('ThePrimeagen/harpoon')
 call dein#add('nvim-telescope/telescope.nvim')
 call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' })
@@ -74,5 +75,6 @@ let g:airline_theme='molokai'
 
 lua require('nvim-tree').setup({ preserve_window_proportions = true })
 lua require('gitsigns').setup()
+lua require('spellsitter').setup()
 lua require('nvim-autopairs').setup{}
 lua require('projectlaunch').setup({split_default_width = 80})
