@@ -12,4 +12,5 @@ lua require('plugin_settings/nvim-cmp')
 lua require('plugin_settings/nvim-lsp')
 lua require('plugin_settings/nvim-treesitter')
 lua require('plugin_settings/formatter-nvim')
+lua require('plugin_settings/gitsigns')
 
