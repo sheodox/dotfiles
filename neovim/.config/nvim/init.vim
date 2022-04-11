@@ -8,6 +8,7 @@ runtime keymaps.vim
 " any augroup/autocmd
 lua require("autocommands")
 " plugin specific settings/setup for plugins with lots of settings
+lua require('plugin_settings/general')
 lua require('plugin_settings/nvim-cmp')
 lua require('plugin_settings/nvim-lsp')
 lua require('plugin_settings/nvim-treesitter')

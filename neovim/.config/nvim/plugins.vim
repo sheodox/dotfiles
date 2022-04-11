@@ -70,10 +70,3 @@ endif
 "End dein Scripts-------------------------
 
 let g:airline_powerline_fonts = 1
-
-lua require('nvim-tree').setup({ preserve_window_proportions = true })
-lua require('gitsigns').setup()
-lua require('spellsitter').setup()
-lua require('nvim-autopairs').setup{}
-lua require('projectlaunch').setup({split_default_width = 80})
-lua require('lualine').setup()
