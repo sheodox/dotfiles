@@ -1,6 +1,11 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
+
+local function path_exists(file_path)
+	return fn.empty(fn.glob(file_path)) == 0
+end
+
+if not path_exists(install_path) then
 	packer_bootstrap = fn.system({
 		"git",
 		"clone",
@@ -11,7 +16,17 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 end
 
+-- allow the same config to work on machines with local clones of my own plugins,
+-- without needing to clone them on all machines that use my dotfiles
+local function use_local_if_exists(local_path, github_path)
+	if path_exists(local_path) then
+		return local_path
+	end
+	return github_path
+end
+
 return require("packer").startup(function(use)
+	use({ "wbthomason/packer.nvim" })
 	use("lewis6991/impatient.nvim")
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/nvim-cmp")
@@ -49,10 +64,11 @@ return require("packer").startup(function(use)
 	use("ggandor/lightspeed.nvim")
 	use("windwp/nvim-autopairs")
 	use("junegunn/goyo.vim")
-	--call dein#local('~/code/lua', {}, ['projectlaunch.nvim'])
-	--"call dein#local('~/code/lua', {}, ['markdown-map.nvim'])
-	--"call dein#add('sheodox/projectlaunch.nvim')
-	--" call dein#add('sheodox/markdown-map.nvim')
+
+	-- my plugins
+	use(use_local_if_exists("~/code/lua/projectlaunch.nvim", "sheodox/projectlaunch.nvim"))
+	use(use_local_if_exists("~/code/lua/markdown-map.nvim", "sheodox/markdown-map.nvim"))
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
