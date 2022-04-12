@@ -1,3 +1,4 @@
+vim.cmd[[
 let mapleader = ","
 
 nnoremap <silent> <leader>t :NvimTreeFindFileToggle<CR>
@@ -85,3 +86,4 @@ lua vim.keymap.set('n', "<leader>lm", require('projectlaunch').show_prev, {norem
 lua vim.keymap.set('n', "<leader>lr", require('projectlaunch').restart_command_in_split, {noremap = true, expr = false, buffer = false})
 
 lua vim.keymap.set('n', "<leader>md", require('markdownmap').toggle_map_menu, {noremap = true, expr = false, buffer = false})
+]]

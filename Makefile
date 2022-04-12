@@ -58,10 +58,6 @@ neovim: deps node rust lua-lsp
 	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server bash-language-server @angular/language-server
 	stow neovim
 	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
-	# install the plugin manager dein
-	mkdir -p /tmp/sheodox-dotfiles/dein
-	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/sheodox-dotfiles/dein/installer.sh
-	sh /tmp/sheodox-dotfiles/dein/installer.sh ~/.cache/dein
 	# build neovim
 	mkdir -p ~/code/other
 	cd ~/code/other &&\

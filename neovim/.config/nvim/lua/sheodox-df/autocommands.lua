@@ -1,7 +1,7 @@
-local writingGroup = vim.api.nvim_create_augroup("sheodox-writing", { clear = true })
+local group = vim.api.nvim_create_augroup("sheodox-autocommands", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "gitcommit" },
-	group = writingGroup,
+	group = group,
 	callback = function()
 		vim.opt_local.textwidth = 0
 		vim.opt_local.wrap = true
@@ -50,10 +50,9 @@ local function createBranch()
 	end)
 end
 
-local fugitiveGroup = vim.api.nvim_create_augroup("sheodox-fugitive", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "fugitive",
-	group = fugitiveGroup,
+	group = group,
 	callback = function()
 		-- prompt to create and switch to a new branch
 		vim.keymap.set("n", "<leader>gb", createBranch, { noremap = true, expr = false, buffer = true })

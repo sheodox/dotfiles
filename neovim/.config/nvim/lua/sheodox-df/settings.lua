@@ -1,3 +1,4 @@
+vim.cmd([[
 set spell
 
 set nowrap
@@ -36,3 +37,4 @@ endif
 let g:tokyonight_style="night"
 colorscheme tokyonight
 set background=dark
+]])
