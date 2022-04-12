@@ -1,11 +1,8 @@
 local fn = vim.fn
+local util = require("sheodox-df.util")
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
-local function path_exists(file_path)
-	return fn.empty(fn.glob(file_path)) == 0
-end
-
-if not path_exists(install_path) then
+if not util.path_exists(install_path) then
 	packer_bootstrap = fn.system({
 		"git",
 		"clone",
@@ -19,7 +16,7 @@ end
 -- allow the same config to work on machines with local clones of my own plugins,
 -- without needing to clone them on all machines that use my dotfiles
 local function use_local_if_exists(local_path, github_path)
-	if path_exists(local_path) then
+	if util.path_exists(local_path) then
 		return local_path
 	end
 	return github_path

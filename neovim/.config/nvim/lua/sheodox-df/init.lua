@@ -14,3 +14,6 @@ require("sheodox-df.plugin_settings.nvim-lsp")
 require("sheodox-df.plugin_settings.nvim-treesitter")
 require("sheodox-df.plugin_settings.formatter-nvim")
 require("sheodox-df.plugin_settings.gitsigns")
+
+-- optional machine-specific configuration
+pcall(require, "sheodox-df.private")
