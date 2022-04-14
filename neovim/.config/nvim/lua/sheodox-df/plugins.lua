@@ -22,7 +22,7 @@ local function use_local_if_exists(local_path, github_path)
 	return github_path
 end
 
-return require("packer").startup(function(use)
+require("packer").startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 	use("lewis6991/impatient.nvim")
 	use("neovim/nvim-lspconfig")
@@ -50,6 +50,7 @@ return require("packer").startup(function(use)
 	use("preservim/nerdcommenter")
 	use("editorconfig/editorconfig-vim")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use("romgrk/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
 	use("mattn/emmet-vim")
 	use({ "rrethy/vim-hexokinase", run = "make hexokinase" })
