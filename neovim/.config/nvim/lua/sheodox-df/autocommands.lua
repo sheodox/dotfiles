@@ -66,3 +66,45 @@ vim.api.nvim_create_autocmd("FileType", {
 		)
 	end,
 })
+
+local last_type_name
+local function gen_go_type_method(use_last)
+	local type_name = last_type_name
+	if not use_last or not last_type_name then
+		type_name = vim.fn.expand("<cword>")
+	end
+
+	if type_name == "" then
+		return
+	end
+
+	vim.ui.input({ prompt = "Enter a new method name for " .. type_name .. ": " }, function(method_name)
+		if not method_name or method_name == "" then
+			return
+		end
+
+		last_type_name = type_name
+
+		local is_pointer_receiver = string.find(method_name, "%*")
+		local type_first_char = string.lower(string.sub(type_name, 1, 1))
+
+		if is_pointer_receiver then
+			method_name = string.gsub(method_name, "\\**", "")
+			type_name = "*" .. type_name
+		end
+
+		local method_stub = "func (" .. type_first_char .. " " .. type_name .. ") " .. method_name .. "() {\n\n}"
+		vim.fn.setreg('"', method_stub)
+	end)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "go",
+	group = group,
+	callback = function()
+		vim.keymap.set("n", "<leader>om", gen_go_type_method, { noremap = true, expr = false, buffer = true })
+		vim.keymap.set("n", "<leader>oM", function()
+			gen_go_type_method(true)
+		end, { noremap = true, expr = false, buffer = true })
+	end,
+})
