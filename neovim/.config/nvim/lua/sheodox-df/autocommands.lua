@@ -1,3 +1,5 @@
+local settings = require("sheodox-df.settings")
+
 local group = vim.api.nvim_create_augroup("sheodox-autocommands", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "gitcommit" },
@@ -107,4 +109,9 @@ vim.api.nvim_create_autocmd("FileType", {
 			gen_go_type_method(true)
 		end, { noremap = true, expr = false, buffer = true })
 	end,
+})
+
+-- need to set custom highlights in an autocmd because Goyo reappplies the colorscheme when entering/exiting
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = settings.set_additional_highlights,
 })

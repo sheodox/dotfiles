@@ -1,5 +1,8 @@
+local M = {}
+
 vim.cmd([[
-set spell
+" set spell
+set nospell
 
 set nowrap
 set noerrorbells
@@ -38,3 +41,12 @@ let g:tokyonight_style="night"
 colorscheme tokyonight
 set background=dark
 ]])
+
+function M.set_additional_highlights()
+	-- make the background color on nvim-treesitter-context contrast more with the normal text
+	vim.cmd("hi TreesitterContext guibg=#292e42")
+end
+
+M.set_additional_highlights()
+
+return M
