@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd([[
 let mapleader = ","
 
 nnoremap <silent> <leader>t :NvimTreeFindFileToggle<CR>
@@ -30,7 +30,7 @@ nnoremap <silent> <C-q> :BufferClose<CR>
 nnoremap <silent> <C-t> :tabnew<CR>
 
 " git fugitive magic command
-nnoremap <leader>gs :G<CR>
+nnoremap <leader>gs :vertical G<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope git_files<cr>
@@ -86,4 +86,4 @@ lua vim.keymap.set('n', "<leader>lm", require('projectlaunch').show_prev, {norem
 lua vim.keymap.set('n', "<leader>lr", require('projectlaunch').restart_command_in_split, {noremap = true, expr = false, buffer = false})
 
 lua vim.keymap.set('n', "<leader>md", require('markdownmap').toggle_map_menu, {noremap = true, expr = false, buffer = false})
-]]
+]])
