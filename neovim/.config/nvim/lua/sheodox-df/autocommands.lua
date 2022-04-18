@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set(
 			"n",
 			"<leader>gp",
-			"<cmd>Git -c push.default=current push<CR>",
+			"<cmd>Git -c push.default=current push --set-upstream<CR>",
 			{ noremap = true, buffer = true }
 		)
 	end,
