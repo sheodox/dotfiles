@@ -1,6 +1,29 @@
+local util = require("sheodox-df.util")
+
+local function get_prettier_bin_path()
+	-- depending on the project prettier can exist in different locations,
+	-- this will check all known locations for prettier and return the one
+	-- that matches, if any
+	local possible_paths = {
+		-- most projects
+		"node_modules/.bin/prettier",
+		-- tadoku
+		"frontend/web/node_modules/.bin/prettier",
+	}
+
+	for _, p in ipairs(possible_paths) do
+		if util.path_exists(p) then
+			return p
+		end
+	end
+
+	-- if we don't know where it is just pass the most likely, maybe they haven't npm installed yet?
+	return possible_paths[1]
+end
+
 local function prettier()
 	return {
-		exe = "node_modules/.bin/prettier",
+		exe = get_prettier_bin_path(),
 		args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--single-quote" },
 		stdin = true,
 	}
