@@ -9,7 +9,7 @@ cmp.setup({
 			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 		end,
 	},
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -19,7 +19,7 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	},
+	}),
 	experimental = {
 		native_menu = false,
 		ghost_text = true,
@@ -48,6 +48,7 @@ cmp.setup.cmdline("/", {
 	sources = {
 		{ name = "buffer" },
 	},
+	mapping = cmp.mapping.preset.cmdline({}),
 })
 
 -- Use cmdline & path source for ':'.
@@ -57,4 +58,5 @@ cmp.setup.cmdline(":", {
 	}, {
 		{ name = "cmdline" },
 	}),
+	mapping = cmp.mapping.preset.cmdline({}),
 })
