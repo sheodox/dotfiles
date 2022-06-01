@@ -41,6 +41,12 @@ deps:
 	sudo dnf install stow
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(shell rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(shell rpm -E %fedora).noarch.rpm
+	# stuff for neovim
+	sudo dnf install xclip ripgrep rubygems ruby-devel
+	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
+	# go
+	sudo dnf install golang-bin
+	go install golang.org/x/tools/gopls@latest
 
 kitty: deps
 	sh ./install/kitty.sh
@@ -51,14 +57,12 @@ mozc:
 	stow fcitx5
 
 # install neovim and dependencies these dotfiles use
-neovim: deps node rust lua-lsp
-	sudo dnf install xclip ripgrep rubygems ruby-devel
+neovim: deps node lua-lsp
 	# install language servers used by nvim-lsp
 	gem install solargraph
 	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server bash-language-server @angular/language-server
 	stow neovim
 	stow vim
-	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
 	# build neovim
 	mkdir -p ~/code/other
 	cd ~/code/other &&\
