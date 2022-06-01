@@ -57,6 +57,7 @@ neovim: deps node rust lua-lsp
 	gem install solargraph
 	npm i -g typescript typescript-language-server vscode-langservers-extracted pyright svelte-language-server @prisma/language-server bash-language-server @angular/language-server
 	stow neovim
+	stow vim
 	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
 	# build neovim
 	mkdir -p ~/code/other
