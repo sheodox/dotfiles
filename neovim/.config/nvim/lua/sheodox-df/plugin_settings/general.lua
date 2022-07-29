@@ -1,4 +1,4 @@
-require("nvim-tree").setup({ preserve_window_proportions = true })
+require("nvim-tree").setup({ view = { width = 50, preserve_window_proportions = true } })
 require("gitsigns").setup()
 require("spellsitter").setup()
 require("nvim-autopairs").setup({})
