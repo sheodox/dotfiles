@@ -7,6 +7,7 @@ local function get_prettier_bin_path()
 	local possible_paths = {
 		-- most projects
 		"node_modules/.bin/prettier",
+		"src/static/node_modules/.bin/prettier",
 		-- tadoku
 		"frontend/web/node_modules/.bin/prettier",
 	}
