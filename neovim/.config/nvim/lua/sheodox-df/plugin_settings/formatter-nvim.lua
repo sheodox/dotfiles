@@ -42,6 +42,14 @@ require("formatter").setup({
 		json = { prettier },
 		yaml = { prettier },
 		markdown = { prettier },
+		rust = {
+			function()
+				return {
+					exe = "rustfmt",
+					stdin = true,
+				}
+			end,
+		},
 		go = {
 			function()
 				return {

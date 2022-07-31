@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		"*.md",
 		"*.go",
 		"*.lua",
+		"*.rs",
 	},
 	group = autoformatGroup,
 	callback = function()

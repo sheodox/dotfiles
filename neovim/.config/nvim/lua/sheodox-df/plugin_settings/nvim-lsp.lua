@@ -42,7 +42,18 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = { "tsserver", "bashls", "html", "cssls", "angularls", "jsonls", "solargraph", "pyright", "gopls" }
+local servers = {
+	"tsserver",
+	"bashls",
+	"html",
+	"cssls",
+	"angularls",
+	"jsonls",
+	"solargraph",
+	"pyright",
+	"gopls",
+	"rust_analyzer",
+}
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup({
 		on_attach = on_attach,

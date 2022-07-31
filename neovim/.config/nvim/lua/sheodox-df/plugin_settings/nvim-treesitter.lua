@@ -16,6 +16,7 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"prisma",
 		"tsx",
+		"rust",
 	},
 	highlight = {
 		enable = true,
