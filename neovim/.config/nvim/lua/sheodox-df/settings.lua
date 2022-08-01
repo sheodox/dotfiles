@@ -45,8 +45,16 @@ set background=dark
 function M.set_additional_highlights()
 	-- make the background color on nvim-treesitter-context contrast more with the normal text
 	vim.cmd("hi TreesitterContext guibg=#292e42")
+	-- remove background for some groups for transparent terminal
+	vim.cmd("hi Normal guibg=None")
+	vim.cmd("hi NormalNC guibg=None")
+	vim.cmd("hi SignColumn guibg=None")
 end
 
 M.set_additional_highlights()
+
+local cwd_path = vim.split(vim.fn.getcwd(), "/")
+vim.opt.title = true
+vim.opt.titlestring = cwd_path[#cwd_path] .. " - nvim"
 
 return M
