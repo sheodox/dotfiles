@@ -42,3 +42,10 @@ export PS1="\[\e[33m\]\`nonzero_return\`\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\
 . "$HOME/.cargo/env"
 
 alias luamake=/home/sheodox/code/other/lua-language-server/3rd/luamake/luamake
+
+function find_projects() {
+	PROJECT_DIR="$(fd .git$ ~/code -H -E node_modules -t d | sed 's/\.git$//' | fzf)"
+	echo "$PROJECT_DIR"
+	cd $PROJECT_DIR
+}
+alias pj="find_projects"
