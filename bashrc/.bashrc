@@ -45,6 +45,8 @@ alias luamake=/home/sheodox/code/other/lua-language-server/3rd/luamake/luamake
 
 function find_projects() {
 	PROJECT_DIR="$(fd .git$ --base-directory $HOME/code -H -E node_modules -t d --prune | sed 's/\.git$//' | fzf)"
-	cd "$HOME/code/$PROJECT_DIR"
+	if [[ $PROJECT_DIR != "" ]]; then
+		cd "$HOME/code/$PROJECT_DIR"
+	fi
 }
 alias pj="find_projects"
