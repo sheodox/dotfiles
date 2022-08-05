@@ -78,6 +78,9 @@ nnoremap <A-q><A-q> :qa!<CR>
 " quit on :Q
 command! Q quit
 
+" search for the visual selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 lua vim.keymap.set('n', "<leader>ll", require('projectlaunch').toggle_main_menu, {noremap = true, expr = false, buffer = false})
 lua vim.keymap.set('n', "<leader>lf", require('projectlaunch').toggle_float, {noremap = true, expr = false, buffer = false})
 lua vim.keymap.set('n', "<leader>ls", require('projectlaunch').toggle_split, {noremap = true, expr = false, buffer = false})
