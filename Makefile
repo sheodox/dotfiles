@@ -42,7 +42,7 @@ deps:
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(shell rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(shell rpm -E %fedora).noarch.rpm
 	# stuff for neovim
-	sudo dnf install xclip ripgrep rubygems ruby-devel bat fd-find fzf
+	sudo dnf install xclip ripgrep rubygems ruby-devel bat fd-find fzf tealdeer
 	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
 	# go
 	sudo dnf install golang-bin
