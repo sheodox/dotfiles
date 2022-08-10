@@ -14,6 +14,7 @@ set incsearch
 set scrolloff=8
 set signcolumn=yes
 set colorcolumn=120
+set mouse=
 
 set updatetime=300
 
