@@ -4,6 +4,8 @@ require("sheodox-df.plugins")
 require("sheodox-df.settings")
 -- setup keybindings
 require("sheodox-df.keymaps")
+-- setup commands
+require("sheodox-df.commands")
 
 -- any augroup/autocmd
 require("sheodox-df.autocommands")
