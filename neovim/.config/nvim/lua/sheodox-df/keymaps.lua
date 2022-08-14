@@ -32,25 +32,8 @@ nnoremap <silent> <C-t> :tabnew<CR>
 " git fugitive magic command
 nnoremap <leader>gs :vertical G<CR>
 
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope git_files<cr>
-nnoremap <leader>F <cmd>Telescope resume<cr>
-nnoremap <leader>fr <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fgb <cmd>Telescope git_branches<cr>
-nnoremap <leader>fgs <cmd>Telescope git_status<cr>
-nnoremap <leader>gr <cmd>Telescope lsp_references<cr>
-" find files within the directory of the current file, good for finding
-" related files to the file you're in when the file path is too long for the
-" file tree to really be easy to see without closing your buffer's window
-nnoremap <leader>fd <cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:h') })<cr>
-
 " treesitter
 nnoremap <silent> <leader>k :TSHighlightCapturesUnderCursor<CR>
-
-" nerdcommenter, toggle line with Ctrl + /
-xnoremap <C-_> :call nerdcommenter#Comment('x', 'Toggle')<CR>
 
 " easy copy/paste
 xnoremap <leader>c "+y
@@ -60,20 +43,6 @@ xnoremap <leader>p "+p
 nnoremap <leader>qn :cnext<CR>
 nnoremap <leader>qp :cprev<CR>
 
-" harpoon
-nnoremap <leader>hf :lua require("harpoon.mark").add_file()<CR>
-nnoremap <leader>1 :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <leader>2 :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <leader>3 :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <leader>4 :lua require("harpoon.ui").nav_file(4)<CR>
-" set a harpoon mark at the specified index
-nnoremap <leader>h1 :lua require("harpoon.mark").set_current_at(1)<CR>
-nnoremap <leader>h2 :lua require("harpoon.mark").set_current_at(2)<CR>
-nnoremap <leader>h3 :lua require("harpoon.mark").set_current_at(3)<CR>
-nnoremap <leader>h4 :lua require("harpoon.mark").set_current_at(4)<CR>
-" open the harpoon menu
-nnoremap <leader>hm :lua require("harpoon.ui").toggle_quick_menu()<CR>
-
 nnoremap <A-q><A-q> :qa!<CR>
 
 " quit on :Q
@@ -81,13 +50,107 @@ command! Q quit
 
 " search for the visual selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-lua vim.keymap.set('n', "<leader>ll", require('projectlaunch').toggle_main_menu, {noremap = true, expr = false, buffer = false})
-lua vim.keymap.set('n', "<leader>lf", require('projectlaunch').toggle_float, {noremap = true, expr = false, buffer = false})
-lua vim.keymap.set('n', "<leader>ls", require('projectlaunch').toggle_split, {noremap = true, expr = false, buffer = false})
-lua vim.keymap.set('n', "<leader>ln", require('projectlaunch').show_next, {noremap = true, expr = false, buffer = false})
-lua vim.keymap.set('n', "<leader>lm", require('projectlaunch').show_prev, {noremap = true, expr = false, buffer = false})
-lua vim.keymap.set('n', "<leader>lr", require('projectlaunch').restart_command_in_split, {noremap = true, expr = false, buffer = false})
-
-lua vim.keymap.set('n', "<leader>md", require('markdownmap').toggle_map_menu, {noremap = true, expr = false, buffer = false})
 ]])
+
+local telescope = require("telescope.builtin")
+-- Find files using Telescope command-line sugar.
+local telescope_keymap_n = {
+	["<leader>ff"] = function()
+		telescope.git_files({ show_untracked = true })
+	end,
+	["<leader>F"] = function()
+		telescope.resume()
+	end,
+	["<leader>fr"] = function()
+		telescope.live_grep()
+	end,
+	["<leader>fb"] = function()
+		telescope.buffers()
+	end,
+	["<leader>fh"] = function()
+		telescope.help_tags()
+	end,
+	["<leader>fgb"] = function()
+		telescope.git_branches()
+	end,
+	["<leader>fgs"] = function()
+		telescope.git_status()
+	end,
+	["<leader>gr"] = function()
+		telescope.lsp_references()
+	end,
+}
+
+for mapping, fn in pairs(telescope_keymap_n) do
+	vim.keymap.set("n", mapping, fn)
+end
+
+-- find files within the directory of the current file, good for finding
+-- related files to the file you're in when the file path is too long for the
+-- file tree to really be easy to see without closing your buffer's window
+vim.keymap.set("n", "<leader>fd", function()
+	telescope.find_files({ cwd = vim.fn.expand("%:h") })
+end)
+
+local projectlaunch = require("projectlaunch")
+vim.keymap.set("n", "<leader>ll", projectlaunch.toggle_main_menu, { noremap = true, expr = false, buffer = false })
+vim.keymap.set("n", "<leader>lf", projectlaunch.toggle_float, { noremap = true, expr = false, buffer = false })
+vim.keymap.set("n", "<leader>ls", projectlaunch.toggle_split, { noremap = true, expr = false, buffer = false })
+vim.keymap.set("n", "<leader>ln", projectlaunch.show_next, { noremap = true, expr = false, buffer = false })
+vim.keymap.set("n", "<leader>lm", projectlaunch.show_prev, { noremap = true, expr = false, buffer = false })
+vim.keymap.set(
+	"n",
+	"<leader>lr",
+	projectlaunch.restart_command_in_split,
+	{ noremap = true, expr = false, buffer = false }
+)
+
+vim.keymap.set(
+	"n",
+	"<leader>md",
+	require("markdownmap").toggle_map_menu,
+	{ noremap = true, expr = false, buffer = false }
+)
+
+-- harpoon
+local harpoon_mark = require("harpoon.mark")
+local harpoon_ui = require("harpoon.ui")
+local harpoon_keymaps_n = {
+	["<leader>hf"] = function()
+		harpoon_mark.add_file()
+	end,
+	-- navigate directly to a file at the specified index
+	["<leader>1"] = function()
+		harpoon_ui.nav_file(1)
+	end,
+	["<leader>2"] = function()
+		harpoon_ui.nav_file(2)
+	end,
+	["<leader>3"] = function()
+		harpoon_ui.nav_file(3)
+	end,
+	["<leader>4"] = function()
+		harpoon_ui.nav_file(4)
+	end,
+	--set a harpoon mark at the specified index
+	["<leader>h1"] = function()
+		harpoon_mark.set_current_at(1)
+	end,
+	["<leader>h2"] = function()
+		harpoon_mark.set_current_at(2)
+	end,
+	["<leader>h3"] = function()
+		harpoon_mark.set_current_at(3)
+	end,
+	["<leader>h4"] = function()
+		harpoon_mark.set_current_at(4)
+	end,
+	-- open the harpoon menu
+	["<leader>hm"] = function()
+		harpoon_ui.toggle_quick_menu()
+	end,
+}
+
+for mapping, fn in pairs(harpoon_keymaps_n) do
+	vim.keymap.set("n", mapping, fn)
+end

@@ -9,6 +9,7 @@ require("sheodox-df.keymaps")
 require("sheodox-df.autocommands")
 -- plugin specific settings/setup for plugins with lots of settings
 require("sheodox-df.plugin_settings.general")
+require("sheodox-df.plugin_settings.luasnip")
 require("sheodox-df.plugin_settings.nvim-cmp")
 require("sheodox-df.plugin_settings.nvim-lsp")
 require("sheodox-df.plugin_settings.nvim-treesitter")
