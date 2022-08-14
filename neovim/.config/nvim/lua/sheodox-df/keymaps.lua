@@ -53,7 +53,6 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 ]])
 
 local telescope = require("telescope.builtin")
--- Find files using Telescope command-line sugar.
 local telescope_keymap_n = {
 	["<leader>ff"] = function()
 		telescope.git_files({ show_untracked = true })
@@ -79,18 +78,17 @@ local telescope_keymap_n = {
 	["<leader>gr"] = function()
 		telescope.lsp_references()
 	end,
+	-- find files within the directory of the current file, good for finding
+	-- related files to the file you're in when the file path is too long for the
+	-- file tree to really be easy to see without closing your buffer's window
+	["<leader>fd"] = function()
+		telescope.find_files({ cwd = vim.fn.expand("%:h") })
+	end,
 }
 
 for mapping, fn in pairs(telescope_keymap_n) do
 	vim.keymap.set("n", mapping, fn)
 end
-
--- find files within the directory of the current file, good for finding
--- related files to the file you're in when the file path is too long for the
--- file tree to really be easy to see without closing your buffer's window
-vim.keymap.set("n", "<leader>fd", function()
-	telescope.find_files({ cwd = vim.fn.expand("%:h") })
-end)
 
 local projectlaunch = require("projectlaunch")
 vim.keymap.set("n", "<leader>ll", projectlaunch.toggle_main_menu, { noremap = true, expr = false, buffer = false })
