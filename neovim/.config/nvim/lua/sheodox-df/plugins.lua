@@ -46,7 +46,12 @@ require("packer").startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("ryanoasis/vim-devicons")
 	use("tpope/vim-fugitive")
-	use("tpope/vim-surround")
+	use({
+		"kylechui/nvim-surround",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	})
 	use({
 		"numToStr/Comment.nvim",
 		config = function()
@@ -55,6 +60,7 @@ require("packer").startup(function(use)
 	})
 	use("editorconfig/editorconfig-vim")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("lewis6991/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
 	use("mattn/emmet-vim")
