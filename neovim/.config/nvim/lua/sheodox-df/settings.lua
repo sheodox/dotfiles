@@ -39,7 +39,7 @@ if exists('+termguicolors')
 endif
 
 let g:tokyonight_style="night"
-colorscheme tokyonight
+colorscheme kanagawa
 set background=dark
 ]])
 
