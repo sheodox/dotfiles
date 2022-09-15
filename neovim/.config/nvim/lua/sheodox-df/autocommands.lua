@@ -1,6 +1,6 @@
 local settings = require("sheodox-df.settings")
-
 local group = vim.api.nvim_create_augroup("sheodox-autocommands", { clear = true })
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "gitcommit" },
 	group = group,
@@ -115,4 +115,38 @@ vim.api.nvim_create_autocmd("FileType", {
 -- need to set custom highlights in an autocmd because Goyo reappplies the colorscheme when entering/exiting
 vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = settings.set_additional_highlights,
+})
+
+local ns_id_packagejson = vim.api.nvim_create_namespace("sheodox-packagejson")
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+	pattern = { "package.json" },
+	group = group,
+	callback = function()
+		vim.api.nvim_buf_clear_namespace(0, ns_id_packagejson, 0, -1)
+		local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+		local isInDeps = false
+
+		for line_num, line in ipairs(lines) do
+			local trimmedLine = vim.trim(line)
+			if vim.startswith(trimmedLine, "}") then
+				isInDeps = false
+			end
+
+			if isInDeps then
+				local split = vim.split(line, ":")
+				local text = vim.trim(split[1]):gsub('"', "")
+				local npm_url = "https://www.npmjs.com/package/" .. text
+
+				vim.api.nvim_buf_set_extmark(0, ns_id_packagejson, line_num - 1, 0, {
+					virt_text = { { npm_url, "Comment" } },
+					virt_text_pos = "eol",
+				})
+			elseif
+				vim.startswith(trimmedLine, '"dependencies"') or vim.startswith(trimmedLine, '"devDependencies"')
+			then
+				isInDeps = true
+			end
+		end
+	end,
 })
