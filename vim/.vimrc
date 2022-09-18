@@ -35,6 +35,7 @@ if exists('+termguicolors')
 endif
 
 set background=dark
+" Color palette from https://github.com/rebelot/kanagawa.nvim
 hi Normal guibg=#1F1F28 guifg=#DCD7BA
 hi SpellBad guibg=#1F1F28 cterm=undercurl
 hi Identifier guifg=#7E9CD8
