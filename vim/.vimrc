@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 let mapleader = ","
 
 set spell
@@ -27,6 +30,9 @@ set listchars=tab:›\ ,extends:›,precedes:‹,nbsp:·,trail:·,lead:.
 set t_Co=256
 set cursorline
 
+filetype plugin indent on
+syntax enable
+
 if exists('+termguicolors')
 	let &t_ut=''
 	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -48,11 +54,12 @@ hi Special guifg=#957FB8
 hi Underlined cterm=underline
 hi Error guifg=#E82424
 hi LineNr guifg=#54546D
-hi CursorLineNr guifg=#54546D
+hi CursorLineNr guifg=#FF9E3B cterm=none
 hi CursorLine guibg=#363646 cterm=none
 hi SpecialKey ctermfg=16 guifg=#3E3E3E " list chars
 hi EndOfBuffer guifg=#1F1F28
 hi SignColumn guibg=#1F1F28 
+hi ColorColumn guibg=#2A2A37
 
 function! SynStack ()
     for i1 in synstack(line("."), col("."))
