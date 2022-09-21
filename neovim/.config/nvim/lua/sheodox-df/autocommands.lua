@@ -150,3 +150,27 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = { "COMMIT_EDITMSG" },
+	group = group,
+	callback = function()
+		local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]
+		-- don't overwrite the first line if there is text there somehow
+		if first_line ~= "" then
+			return
+		end
+
+		local branch_name = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1]
+		local ticket_name = branch_name:match("%a+-%d+")
+
+		-- don't try and do something if a ticket number isn't found in the branch name
+		if not ticket_name then
+			return
+		end
+
+		local ticket_prelude = ticket_name:upper() .. ": "
+		vim.api.nvim_buf_set_lines(0, 0, 1, false, { ticket_prelude })
+		vim.api.nvim_win_set_cursor(0, { 1, #ticket_prelude - 1 })
+	end,
+})
