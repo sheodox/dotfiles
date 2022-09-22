@@ -18,13 +18,19 @@ local function get_prettier_bin_path()
 		end
 	end
 
-	-- if we don't know where it is just pass the most likely, maybe they haven't npm installed yet?
-	return possible_paths[1]
+	-- if we don't know where to find prettier disable formatting. Could just be using neovim for notes
+	-- with some markdown files in somme directory
+	return nil
 end
 
 local function prettier()
+	local exe = get_prettier_bin_path()
+	if not exe then
+		return nil
+	end
+
 	return {
-		exe = get_prettier_bin_path(),
+		exe = exe,
 		args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)) },
 		stdin = true,
 	}
