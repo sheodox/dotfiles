@@ -38,6 +38,17 @@ require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("folke/tokyonight.nvim")
+	use({
+		"folke/noice.nvim",
+		event = "VimEnter",
+		config = function()
+			require("noice").setup()
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	})
 	use("rebelot/kanagawa.nvim")
 	use("lewis6991/gitsigns.nvim")
 	use("lewis6991/spellsitter.nvim")
