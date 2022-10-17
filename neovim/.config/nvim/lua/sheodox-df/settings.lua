@@ -1,7 +1,15 @@
 local M = {}
 
-require("kanagawa").setup({
+require("tokyonight").setup({
 	transparent = true,
+	on_highlights = function(hl, c)
+		hl["@tag"] = {
+			fg = c.orange,
+		}
+		hl["@tag.attribute"] = {
+			fg = c.purple,
+		}
+	end,
 })
 
 vim.cmd([[
@@ -42,10 +50,13 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-let g:tokyonight_style="night"
-colorscheme kanagawa
+colorscheme tokyonight-night
 set background=dark
 ]])
+
+require("notify").setup({
+	background_colour = "#000000",
+})
 
 function M.set_additional_highlights()
 	-- make the background color on nvim-treesitter-context contrast more with the normal text

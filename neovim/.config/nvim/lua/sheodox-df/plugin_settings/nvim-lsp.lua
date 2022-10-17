@@ -40,7 +40,7 @@ end
 -- map buffer local keybindings when the language server attaches
 -- Find more language servers at https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#prismals
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-require("cmp_nvim_lsp").update_capabilities(capabilities)
+require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local servers = {
 	"tsserver",

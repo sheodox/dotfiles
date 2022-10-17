@@ -49,7 +49,6 @@ require("packer").startup(function(use)
 			"rcarriga/nvim-notify",
 		},
 	})
-	use("rebelot/kanagawa.nvim")
 	use("lewis6991/gitsigns.nvim")
 	use("lewis6991/spellsitter.nvim")
 	use("ThePrimeagen/harpoon")
