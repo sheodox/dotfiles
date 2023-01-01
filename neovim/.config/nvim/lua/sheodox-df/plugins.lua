@@ -42,7 +42,18 @@ require("packer").startup(function(use)
 		"folke/noice.nvim",
 		event = "VimEnter",
 		config = function()
-			require("noice").setup()
+			require("noice").setup({
+				messages = {
+					enabled = false,
+				},
+				lsp_progress = {
+					enabled = true,
+					format = "lsp_progress",
+					format_done = "lsp_progress_done",
+					throttle = 1000 / 30,
+					view = "mini",
+				},
+			})
 		end,
 		requires = {
 			"MunifTanjim/nui.nvim",
