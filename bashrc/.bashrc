@@ -50,3 +50,7 @@ function find_projects() {
 	fi
 }
 alias pj="find_projects"
+
+# short command to update sheodox-ui in a project
+# sheodox-ui update -> s-u up -> suup -> soup
+alias soup="npm i sheodox-ui@latest"
