@@ -4,6 +4,13 @@ require("spellsitter").setup()
 require("nvim-autopairs").setup({})
 require("lualine").setup()
 require("treesitter-context").setup()
+
+require("nvim-tree").setup({
+	view = {
+		adaptive_size = true,
+	},
+})
+
 require("harpoon").setup({
 	menu = {
 		width = math.min(vim.api.nvim_win_get_width(0) - 10, 140),
