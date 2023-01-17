@@ -60,6 +60,7 @@ require("packer").startup(function(use)
 			"rcarriga/nvim-notify",
 		},
 	})
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("lewis6991/gitsigns.nvim")
 	use("lewis6991/spellsitter.nvim")
 	use("ThePrimeagen/harpoon")
