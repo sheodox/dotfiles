@@ -8,6 +8,14 @@ To install first install `make` and `git`, clone this repository to your home fo
 
 The `mozc` Japanese IME is installed along with Fcitx5 with either of the desktop commands. These dotfiles default the toggle button to Right Shift.
 
+On Ubuntu you can setup `mozc` by doing:
+1. `sudo apt install fcitx5-mozc`
+1. `sudo apt install fcitx5-config-qt`
+1. `im-config -n fcitx5`
+
+Then restart your computer. You might need to run Fcitx5 and then enable mozc and setup settings.
+
+
 ## Shortcuts
 
 Shortcuts aren't managed by these dotfiles yet, but here are some to set:
