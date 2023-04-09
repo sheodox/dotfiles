@@ -50,6 +50,7 @@ function find_projects() {
 	fi
 }
 alias pj="find_projects"
+alias pjn="find_projects && nvim"
 
 # short command to update sheodox-ui in a project
 # sheodox-ui update -> s-u up -> suup -> soup
