@@ -174,3 +174,13 @@ vim.api.nvim_create_autocmd("BufRead", {
 		vim.api.nvim_win_set_cursor(0, { 1, #ticket_prelude - 1 })
 	end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		local pl = require("projectlaunch")
+		if pl.has_commands() then
+			pl.toggle_launch_menu()
+		end
+	end,
+})
