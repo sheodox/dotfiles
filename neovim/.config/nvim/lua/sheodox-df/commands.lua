@@ -33,3 +33,8 @@ cmd("CopyFileOnKey", function(opts)
 
 	print("Press " .. binding .. " to copy '" .. opts.args .. "' to your clipboard")
 end, { nargs = 1, complete = "file" })
+
+cmd("ThisFilePath", function()
+	-- print the path to the file opened in the current buffer
+	print(vim.fn.expand("%"))
+end, { nargs = 0 })

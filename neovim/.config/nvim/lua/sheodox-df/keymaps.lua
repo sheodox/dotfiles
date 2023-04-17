@@ -147,10 +147,6 @@ local keymaps_n = {
 	["<leader>hm"] = function()
 		harpoon_ui.toggle_quick_menu()
 	end,
-	-- print the path to the file opened in the current buffer
-	["<C-f><C-p>"] = function()
-		print(vim.fn.expand("%"))
-	end,
 }
 
 for mapping, fn in pairs(keymaps_n) do
