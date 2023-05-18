@@ -1,0 +1,20 @@
+{
+	"svelte-ts-script": {
+		"prefix": "s-lang-ts",
+		"body": [
+			"<script lang=\"ts\">",
+			"\t$1",
+			"</script>"
+		],
+		"description": "add a ts lang script to your svelte file"
+	},
+	"svelte-scss-style": {
+		"prefix": "s-lang-scss",
+		"body": [
+			"<style lang=\"scss\">",
+			"\t$1",
+			"</style>"
+		],
+		"description": "add a scss lang style to your svelte file"
+	}
+}

@@ -4,7 +4,7 @@ local util = require("sheodox-df.util")
 -- without needing to clone them on all machines that use my dotfiles
 local function use_local_if_exists(local_path, github_path)
 	if util.path_exists(local_path) then
-		return { local_path, dev = true }
+		return { dir = local_path }
 	end
 	return github_path
 end
@@ -32,11 +32,13 @@ require("lazy").setup({
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-cmdline",
 	"onsails/lspkind-nvim",
-	"L3MON4D3/LuaSnip",
+	{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
 	"saadparwaiz1/cmp_luasnip",
+	"folke/trouble.nvim",
 	"nvim-lua/plenary.nvim",
-	{ "nvim-pack/nvim-spectre", lazy = true },
+	"nvim-pack/nvim-spectre",
 	"nvim-lualine/lualine.nvim",
+	{ "echasnovski/mini.nvim", version = false },
 	{
 		"folke/noice.nvim",
 		event = "VimEnter",
@@ -80,6 +82,7 @@ require("lazy").setup({
 	"kyazdani42/nvim-tree.lua",
 	"ryanoasis/vim-devicons",
 	"tpope/vim-fugitive",
+	"tpope/vim-repeat",
 	{
 		"kylechui/nvim-surround",
 		config = function()
