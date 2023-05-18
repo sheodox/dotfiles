@@ -5,6 +5,8 @@ require("nvim-autopairs").setup({})
 require("lualine").setup()
 require("treesitter-context").setup()
 
+require("mason").setup()
+
 require("nvim-tree").setup({
 	view = {
 		adaptive_size = true,

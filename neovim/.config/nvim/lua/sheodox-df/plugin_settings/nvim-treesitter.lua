@@ -17,6 +17,7 @@ require("nvim-treesitter.configs").setup({
 		"prisma",
 		"tsx",
 		"rust",
+		"vimdoc",
 	},
 	highlight = {
 		enable = true,

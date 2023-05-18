@@ -20,6 +20,11 @@ require("lazy").setup({
 			vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+	},
+	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-buffer",
@@ -47,6 +52,25 @@ require("lazy").setup({
 			"rcarriga/nvim-notify",
 		},
 	},
+
+	-- copied from LazyVim because I couldn't get it to load properly
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
+
 	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
 	"lewis6991/gitsigns.nvim",
 	"lewis6991/spellsitter.nvim",
@@ -68,11 +92,9 @@ require("lazy").setup({
 			require("Comment").setup()
 		end,
 	},
-	"editorconfig/editorconfig-vim",
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	"nvim-treesitter/nvim-treesitter-context",
-	"nvim-treesitter/playground",
 	"mattn/emmet-vim",
 	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
 
