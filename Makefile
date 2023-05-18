@@ -9,7 +9,7 @@ work-desktop: work-apps common-desktop
 common-apps: deps
 	flatpak install flathub \
 		com.spotify.Client \
-		com.uploadedlobster.peek
+		io.github.seadve.Kooha
 	sudo dnf install \
 		vlc \
 		obs-studio
