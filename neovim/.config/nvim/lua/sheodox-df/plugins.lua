@@ -34,8 +34,8 @@ require("lazy").setup({
 	"onsails/lspkind-nvim",
 	"L3MON4D3/LuaSnip",
 	"saadparwaiz1/cmp_luasnip",
-
 	"nvim-lua/plenary.nvim",
+	{ "nvim-pack/nvim-spectre", lazy = true },
 	"nvim-lualine/lualine.nvim",
 	{
 		"folke/noice.nvim",
@@ -71,7 +71,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{ "sindrets/diffview.nvim", dependencies = "nvim-lua/plenary.nvim" },
+	"sindrets/diffview.nvim",
 	"lewis6991/gitsigns.nvim",
 	"lewis6991/spellsitter.nvim",
 	"ThePrimeagen/harpoon",
