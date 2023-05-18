@@ -1,5 +1,4 @@
 vim.cmd([[
-let mapleader = ","
 
 nnoremap <silent> <leader>t :NvimTreeFindFileToggle<CR>
 
