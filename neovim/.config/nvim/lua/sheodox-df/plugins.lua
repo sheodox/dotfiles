@@ -35,6 +35,12 @@ require("lazy").setup({
 	{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
 	"saadparwaiz1/cmp_luasnip",
 	"folke/trouble.nvim",
+	{
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({})
+		end,
+	},
 	"nvim-lua/plenary.nvim",
 	"nvim-pack/nvim-spectre",
 	"nvim-lualine/lualine.nvim",
@@ -107,7 +113,6 @@ require("lazy").setup({
 	"mhartington/formatter.nvim",
 	"ggandor/lightspeed.nvim",
 	"windwp/nvim-autopairs",
-	"junegunn/goyo.vim",
 
 	-- my plugins
 	use_local_if_exists("~/code/lua/projectlaunch.nvim", "sheodox/projectlaunch.nvim"),
