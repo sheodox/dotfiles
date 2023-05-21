@@ -44,6 +44,7 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"nvim-pack/nvim-spectre",
 	"nvim-lualine/lualine.nvim",
+	"christoomey/vim-tmux-navigator",
 	{ "echasnovski/mini.nvim", version = false },
 	{
 		"folke/noice.nvim",
