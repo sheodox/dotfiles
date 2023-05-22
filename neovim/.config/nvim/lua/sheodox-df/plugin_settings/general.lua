@@ -4,6 +4,32 @@ require("spellsitter").setup()
 require("nvim-autopairs").setup({})
 require("lualine").setup()
 require("treesitter-context").setup()
+require("spectre").setup()
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({
+	paths = "./lua/sheodox-df/plugin_settings/snippets/",
+})
+
+-- mini.nvim plugins
+require("mini.ai").setup()
+require("mini.indentscope").setup()
+local animate = require("mini.animate")
+local fast_timing = {
+	timing = animate.gen_timing.cubic({ duration = 100, unit = "total" }),
+}
+
+animate.setup({
+	cursor = fast_timing,
+	scroll = fast_timing,
+	resize = fast_timing,
+	open = fast_timing,
+	close = fast_timing,
+})
+
+-- mason
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 require("nvim-tree").setup({
 	view = {

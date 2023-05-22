@@ -44,13 +44,21 @@ export PS1="\[\e[33m\]\`nonzero_return\`\[\e[m\]\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\
 alias luamake=/home/sheodox/code/other/lua-language-server/3rd/luamake/luamake
 
 function find_projects() {
-	local PROJECT_DIR="$(fd .git$ --base-directory $HOME/code -H -E node_modules -t d --prune | sed 's/\.git$//' | fzf)"
+	local PROJECT_DIR="$(fd .git$ --base-directory $HOME/code -H -E node_modules -t d --prune | sed 's/\.git.*$//' | fzf)"
 	if [[ $PROJECT_DIR != "" ]]; then
 		cd "$HOME/code/$PROJECT_DIR"
 	fi
 }
 alias pj="find_projects"
+alias pjn="find_projects && nvim"
 
 # short command to update sheodox-ui in a project
 # sheodox-ui update -> s-u up -> suup -> soup
 alias soup="npm i sheodox-ui@latest"
+
+# used for projects where the frontend is set up in a src/static directory and i need to often go there for npm installing stuff etc.
+alias static="cd src/static"
+alias server="cd src/server"
+
+alias oitsuku="~/code/go/oitsuku/oitsuku"
+alias sshmon="~/code/python/sshmon/sshmon"

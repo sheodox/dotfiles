@@ -9,7 +9,7 @@ work-desktop: work-apps common-desktop
 common-apps: deps
 	flatpak install flathub \
 		com.spotify.Client \
-		com.uploadedlobster.peek
+		io.github.seadve.Kooha
 	sudo dnf install \
 		vlc \
 		obs-studio
@@ -45,8 +45,10 @@ deps:
 	sudo dnf install xclip wl-clipboard ripgrep rubygems ruby-devel bat fd-find fzf tealdeer
 	sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
 	# go
-	sudo dnf install golang-bin
+	sudo dnf install golang-bin tmux
 	go install golang.org/x/tools/gopls@latest
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	stow tmux
 
 kitty: deps
 	sh ./install/kitty.sh

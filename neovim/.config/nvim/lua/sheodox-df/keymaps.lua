@@ -1,5 +1,4 @@
 vim.cmd([[
-let mapleader = ","
 
 nnoremap <silent> <leader>t :NvimTreeFindFileToggle<CR>
 
@@ -113,7 +112,7 @@ vim.keymap.set(
 -- harpoon
 local harpoon_mark = require("harpoon.mark")
 local harpoon_ui = require("harpoon.ui")
-local harpoon_keymaps_n = {
+local keymaps_n = {
 	["<leader>hf"] = function()
 		harpoon_mark.add_file()
 	end,
@@ -149,6 +148,6 @@ local harpoon_keymaps_n = {
 	end,
 }
 
-for mapping, fn in pairs(harpoon_keymaps_n) do
+for mapping, fn in pairs(keymaps_n) do
 	vim.keymap.set("n", mapping, fn)
 end

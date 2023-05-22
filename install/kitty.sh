@@ -5,7 +5,7 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 # download a nerd font for JetBrains Mono
 mkdir -p /tmp/sheodox-dotfiles/fonts
 cd /tmp/sheodox-dotfiles/fonts
-curl -L -o JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+curl -L -o JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/JetBrainsMono.zip
 # unzip, remove windows compatible fonts
 unzip JetBrainsMono.zip
 rm *Windows*.ttf

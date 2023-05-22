@@ -1,0 +1,11 @@
+{
+	"name": "sheodox-snippets",
+	"contributes": {
+		"snippets": [{
+			"language": [
+				"svelte"
+			],
+			"path": "./svelte.json"
+		}]
+	}
+}

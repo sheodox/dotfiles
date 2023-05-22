@@ -1,44 +1,52 @@
-local fn = vim.fn
 local util = require("sheodox-df.util")
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if not util.path_exists(install_path) then
-	packer_bootstrap = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
-end
 
 -- allow the same config to work on machines with local clones of my own plugins,
 -- without needing to clone them on all machines that use my dotfiles
 local function use_local_if_exists(local_path, github_path)
 	if util.path_exists(local_path) then
-		return local_path
+		return { dir = local_path }
 	end
 	return github_path
 end
 
-require("packer").startup(function(use)
-	use({ "wbthomason/packer.nvim" })
-	use("lewis6991/impatient.nvim")
-	use("neovim/nvim-lspconfig")
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-cmdline")
-	use("onsails/lspkind-nvim")
-	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
-
-	use("nvim-lua/plenary.nvim")
-	use("nvim-lualine/lualine.nvim")
-	use("folke/tokyonight.nvim")
-	use({
+require("lazy").setup({
+	-- the colorscheme should be available when starting Neovim
+	{
+		"folke/tokyonight.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme tokyonight]])
+		end,
+	},
+	{
+		"williamboman/mason.nvim",
+		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+	},
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-cmdline",
+	"onsails/lspkind-nvim",
+	{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
+	"saadparwaiz1/cmp_luasnip",
+	"folke/trouble.nvim",
+	{
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({})
+		end,
+	},
+	"nvim-lua/plenary.nvim",
+	"nvim-pack/nvim-spectre",
+	"nvim-lualine/lualine.nvim",
+	"christoomey/vim-tmux-navigator",
+	{ "echasnovski/mini.nvim", version = false },
+	{
 		"folke/noice.nvim",
 		event = "VimEnter",
 		config = function()
@@ -46,64 +54,68 @@ require("packer").startup(function(use)
 				messages = {
 					enabled = false,
 				},
-				lsp_progress = {
-					enabled = true,
-					format = "lsp_progress",
-					format_done = "lsp_progress_done",
-					throttle = 1000 / 30,
-					view = "mini",
-				},
 			})
 		end,
-		requires = {
+		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
-	})
-	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
-	use("lewis6991/gitsigns.nvim")
-	use("lewis6991/spellsitter.nvim")
-	use("ThePrimeagen/harpoon")
-	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("kyazdani42/nvim-tree.lua")
-	use("ryanoasis/vim-devicons")
-	use("tpope/vim-fugitive")
-	use({
+	},
+
+	-- copied from LazyVim because I couldn't get it to load properly
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
+
+	"sindrets/diffview.nvim",
+	"lewis6991/gitsigns.nvim",
+	"lewis6991/spellsitter.nvim",
+	"ThePrimeagen/harpoon",
+	"nvim-telescope/telescope.nvim",
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	"kyazdani42/nvim-tree.lua",
+	"ryanoasis/vim-devicons",
+	"tpope/vim-fugitive",
+	"tpope/vim-repeat",
+	{
 		"kylechui/nvim-surround",
 		config = function()
 			require("nvim-surround").setup({})
 		end,
-	})
-	use({
+	},
+	{
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
 		end,
-	})
-	use("editorconfig/editorconfig-vim")
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("nvim-treesitter/nvim-treesitter-textobjects")
-	use("nvim-treesitter/nvim-treesitter-context")
-	use("nvim-treesitter/playground")
-	use("mattn/emmet-vim")
-	use({ "rrethy/vim-hexokinase", run = "make hexokinase" })
+	},
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	"nvim-treesitter/nvim-treesitter-textobjects",
+	"nvim-treesitter/nvim-treesitter-context",
+	"mattn/emmet-vim",
+	{ "rrethy/vim-hexokinase", build = "make hexokinase" },
 
-	use("mbbill/undotree")
-	use("romgrk/barbar.nvim")
-	use("kyazdani42/nvim-web-devicons")
-	use("mhartington/formatter.nvim")
-	use("ggandor/lightspeed.nvim")
-	use("windwp/nvim-autopairs")
-	use("junegunn/goyo.vim")
+	"mbbill/undotree",
+	"romgrk/barbar.nvim",
+	"kyazdani42/nvim-web-devicons",
+	"mhartington/formatter.nvim",
+	"ggandor/lightspeed.nvim",
+	"windwp/nvim-autopairs",
 
 	-- my plugins
-	use(use_local_if_exists("~/code/lua/projectlaunch.nvim", "sheodox/projectlaunch.nvim"))
-	use(use_local_if_exists("~/code/lua/markdown-map.nvim", "sheodox/markdown-map.nvim"))
-
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+	use_local_if_exists("~/code/lua/projectlaunch.nvim", "sheodox/projectlaunch.nvim"),
+	use_local_if_exists("~/code/lua/markdown-map.nvim", "sheodox/markdown-map.nvim"),
+})
