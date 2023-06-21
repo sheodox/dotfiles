@@ -34,6 +34,28 @@ require("lazy").setup({
 	"onsails/lspkind-nvim",
 	{ "L3MON4D3/LuaSnip", dependencies = { "rafamadriz/friendly-snippets" } },
 	"saadparwaiz1/cmp_luasnip",
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					-- default options: exact mode, multi window, all directions, with a backdrop
+					require("flash").jump()
+				end,
+			},
+			{
+				"S",
+				mode = { "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+			},
+		},
+	},
 	"folke/trouble.nvim",
 	{
 		"folke/zen-mode.nvim",
@@ -112,7 +134,6 @@ require("lazy").setup({
 	"romgrk/barbar.nvim",
 	"kyazdani42/nvim-web-devicons",
 	"mhartington/formatter.nvim",
-	"ggandor/lightspeed.nvim",
 	"windwp/nvim-autopairs",
 
 	-- my plugins
